@@ -1,4 +1,4 @@
-#ifndef CORE_TASK_MANAGER_H
+﻿#ifndef CORE_TASK_MANAGER_H
 #define CORE_TASK_MANAGER_H
 
 #include "common/AppTypes.h"

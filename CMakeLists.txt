@@ -20,7 +20,12 @@ list(LENGTH SOURCES SOURCES_COUNT)
 message(STATUS "Discovered ${SOURCES_COUNT} C source files in src/")
 
 # Create executable from all discovered sources (include headers so IDEs list them)
-add_executable(SafeTrix ${SOURCES} ${HEADERS})
+add_executable(SafeTrix ${SOURCES} ${HEADERS}
+        src/data/persistence.h)
+
+if (MSVC)
+    target_compile_options(SafeTrix PRIVATE /utf-8)
+endif ()
 
 # Prefer modern target-based configuration
 target_include_directories(SafeTrix PRIVATE ${INCLUDE_DIR})

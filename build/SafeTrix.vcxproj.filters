@@ -72,6 +72,9 @@
     <ClInclude Include="C:\Users\HaoTang\CLionProjects\safetrix\include\utils\FileUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\HaoTang\CLionProjects\safetrix\src\data\persistence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\HaoTang\CLionProjects\safetrix\CMakeLists.txt" />

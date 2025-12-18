@@ -1,4 +1,4 @@
-#include "core/TaskManager.h"
+﻿#include "core/TaskManager.h"
 #include "core/security.h"
 #include "common/ErrorCode.h"
 #include "data/Logger.h"
@@ -41,6 +41,9 @@ int RunTask(TransferTask* task)
     size_t bytesRead;
     task->status = TASK_RUNNING;
 
+    size_t bytesSinceLastSync = 0;
+    const size_t SYNC_THRESHOLD = 1024 * 1024; // 1MB
+
     while ((bytesRead = fread(buffer, 1, CHUNK_SIZE, fpSrc)) > 0)
     {
         EncryptBuffer(buffer, (size_t)bytesRead, &ctx);
@@ -53,8 +56,15 @@ int RunTask(TransferTask* task)
         }
 
         task->currentOffset += bytesRead;
-        TaskManager_UpdateTask(task);
-        TaskManager_Sync();
+        bytesSinceLastSync += bytesRead;
+
+        // Optimize: Sync to disk only when threshold reached
+        if (bytesSinceLastSync >= SYNC_THRESHOLD)
+        {
+            TaskManager_UpdateTask(task);
+            TaskManager_Sync();
+            bytesSinceLastSync = 0;
+        }
 
         if (task->onProgress && (task->currentOffset % (CHUNK_SIZE * 10) == 0))
         {

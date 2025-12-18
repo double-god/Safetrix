@@ -1,4 +1,4 @@
-#include "core/security.h"
+﻿#include "core/security.h"
 #include <string.h>
 
 void InitSecurity(CryptoContext* ctx, const char* password)

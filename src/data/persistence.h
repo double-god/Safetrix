@@ -1,7 +1,5 @@
-
-#endif //SAFETRIX_PERSISTENCE_H
-#ifndef DATA_PERSISTENCE_H
-#define DATA_PERSISTENCE_H
+﻿#ifndef SAFETRIX_PERSISTENCE_H
+#define SAFETRIX_PERSISTENCE_H
 
 #include "common/AppTypes.h" // 需要 TransferTask 定义
 

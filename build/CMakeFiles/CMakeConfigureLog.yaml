@@ -35,7 +35,7 @@ events:
     found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
     search_context:
       ENV{PATH}:
-        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\33768_1765960637568"
+        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\11988_1766072286659"
         - "C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\"
         - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\WINDOWS\\system32"
@@ -64,6 +64,7 @@ events:
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\PowerShell\\7\\"
         - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\"
@@ -77,7 +78,7 @@ events:
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\HaoTang\\AppData\\Roaming\\npm"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Pandoc\\"
-        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\vcpkg\\downloads\\tools\\cmake-3.30.1-windows\\cmake-3.30.1-windows-i386\\bin"
   -
     kind: "message-v1"
     backtrace:
@@ -94,7 +95,7 @@ events:
       The output was:
       0
       閫傜敤浜?.NET Framework MSBuild 鐗堟湰 17.14.23+b0019275e
-      鐢熸垚鍚姩鏃堕棿涓?2025/12/17 18:03:26銆?
+      鐢熸垚鍚姩鏃堕棿涓?2025/12/18 23:44:39銆?
       
       鑺傜偣 1 涓婄殑椤圭洰鈥淐:\\Users\\HaoTang\\CLionProjects\\safetrix\\build\\CMakeFiles\\4.2.1\\CompilerIdC\\CompilerIdC.vcxproj鈥?榛樿鐩爣)銆?
       PrepareForBuild:
@@ -123,7 +124,7 @@ events:
           0 涓鍛?
           0 涓敊璇?
       
-      宸茬敤鏃堕棿 00:00:00.84
+      宸茬敤鏃堕棿 00:00:01.16
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -156,7 +157,7 @@ events:
       - "link"
     candidate_directories:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/"
       - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Windows/System32/"
@@ -185,6 +186,7 @@ events:
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/PowerShell/7/"
       - "C:/Program Files/nodejs/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python311/Scripts/"
@@ -198,13 +200,13 @@ events:
       - "C:/Users/HaoTang/AppData/Local/Programs/Ollama/"
       - "C:/Users/HaoTang/AppData/Roaming/npm/"
       - "C:/Users/HaoTang/AppData/Local/Pandoc/"
-      - "C:/Program Files/CMake/bin/"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.com"
     found: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.exe"
     search_context:
       ENV{PATH}:
-        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\33768_1765960637568"
+        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\11988_1766072286659"
         - "C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\"
         - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\WINDOWS\\system32"
@@ -233,6 +235,7 @@ events:
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\PowerShell\\7\\"
         - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\"
@@ -246,7 +249,7 @@ events:
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\HaoTang\\AppData\\Roaming\\npm"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Pandoc\\"
-        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\vcpkg\\downloads\\tools\\cmake-3.30.1-windows\\cmake-3.30.1-windows-i386\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -270,7 +273,7 @@ events:
       - "lld-link"
     candidate_directories:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/"
       - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Windows/System32/"
@@ -299,6 +302,7 @@ events:
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/PowerShell/7/"
       - "C:/Program Files/nodejs/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python311/Scripts/"
@@ -312,14 +316,14 @@ events:
       - "C:/Users/HaoTang/AppData/Local/Programs/Ollama/"
       - "C:/Users/HaoTang/AppData/Roaming/npm/"
       - "C:/Users/HaoTang/AppData/Local/Pandoc/"
-      - "C:/Program Files/CMake/bin/"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lld-link.com"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lld-link.exe"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lld-link"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/lld-link.com"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/lld-link.exe"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/lld-link"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/lld-link.com"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/lld-link.exe"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/lld-link"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/lld-link.com"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/lld-link.exe"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/lld-link"
@@ -404,6 +408,9 @@ events:
       - "C:/Program Files/nodejs/lld-link.com"
       - "C:/Program Files/nodejs/lld-link.exe"
       - "C:/Program Files/nodejs/lld-link"
+      - "C:/Program Files/CMake/bin/lld-link.com"
+      - "C:/Program Files/CMake/bin/lld-link.exe"
+      - "C:/Program Files/CMake/bin/lld-link"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/lld-link.com"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/lld-link.exe"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/lld-link"
@@ -443,13 +450,13 @@ events:
       - "C:/Users/HaoTang/AppData/Local/Pandoc/lld-link.com"
       - "C:/Users/HaoTang/AppData/Local/Pandoc/lld-link.exe"
       - "C:/Users/HaoTang/AppData/Local/Pandoc/lld-link"
-      - "C:/Program Files/CMake/bin/lld-link.com"
-      - "C:/Program Files/CMake/bin/lld-link.exe"
-      - "C:/Program Files/CMake/bin/lld-link"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/lld-link.com"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/lld-link.exe"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/lld-link"
     found: false
     search_context:
       ENV{PATH}:
-        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\33768_1765960637568"
+        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\11988_1766072286659"
         - "C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\"
         - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\WINDOWS\\system32"
@@ -478,6 +485,7 @@ events:
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\PowerShell\\7\\"
         - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\"
@@ -491,7 +499,7 @@ events:
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\HaoTang\\AppData\\Roaming\\npm"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Pandoc\\"
-        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\vcpkg\\downloads\\tools\\cmake-3.30.1-windows\\cmake-3.30.1-windows-i386\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -513,7 +521,7 @@ events:
       - "link"
     candidate_directories:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/"
       - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Windows/System32/"
@@ -542,6 +550,7 @@ events:
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/PowerShell/7/"
       - "C:/Program Files/nodejs/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python311/Scripts/"
@@ -555,13 +564,13 @@ events:
       - "C:/Users/HaoTang/AppData/Local/Programs/Ollama/"
       - "C:/Users/HaoTang/AppData/Roaming/npm/"
       - "C:/Users/HaoTang/AppData/Local/Pandoc/"
-      - "C:/Program Files/CMake/bin/"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.com"
     found: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/link.exe"
     search_context:
       ENV{PATH}:
-        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\33768_1765960637568"
+        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\11988_1766072286659"
         - "C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\"
         - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\WINDOWS\\system32"
@@ -590,6 +599,7 @@ events:
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\PowerShell\\7\\"
         - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\"
@@ -603,7 +613,7 @@ events:
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\HaoTang\\AppData\\Roaming\\npm"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Pandoc\\"
-        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\vcpkg\\downloads\\tools\\cmake-3.30.1-windows\\cmake-3.30.1-windows-i386\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -625,7 +635,7 @@ events:
       - "mt"
     candidate_directories:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/"
       - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Windows/System32/"
@@ -654,6 +664,7 @@ events:
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/PowerShell/7/"
       - "C:/Program Files/nodejs/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python311/Scripts/"
@@ -667,14 +678,14 @@ events:
       - "C:/Users/HaoTang/AppData/Local/Programs/Ollama/"
       - "C:/Users/HaoTang/AppData/Roaming/npm/"
       - "C:/Users/HaoTang/AppData/Local/Pandoc/"
-      - "C:/Program Files/CMake/bin/"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/mt.com"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/mt.exe"
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/mt"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/mt.com"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/mt.exe"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/mt"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/mt.com"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/mt.exe"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/mt"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/mt.com"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/mt.exe"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/mt"
@@ -759,6 +770,9 @@ events:
       - "C:/Program Files/nodejs/mt.com"
       - "C:/Program Files/nodejs/mt.exe"
       - "C:/Program Files/nodejs/mt"
+      - "C:/Program Files/CMake/bin/mt.com"
+      - "C:/Program Files/CMake/bin/mt.exe"
+      - "C:/Program Files/CMake/bin/mt"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/mt.com"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/mt.exe"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/mt"
@@ -798,13 +812,13 @@ events:
       - "C:/Users/HaoTang/AppData/Local/Pandoc/mt.com"
       - "C:/Users/HaoTang/AppData/Local/Pandoc/mt.exe"
       - "C:/Users/HaoTang/AppData/Local/Pandoc/mt"
-      - "C:/Program Files/CMake/bin/mt.com"
-      - "C:/Program Files/CMake/bin/mt.exe"
-      - "C:/Program Files/CMake/bin/mt"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/mt.com"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/mt.exe"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/mt"
     found: false
     search_context:
       ENV{PATH}:
-        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\33768_1765960637568"
+        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\11988_1766072286659"
         - "C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\"
         - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\WINDOWS\\system32"
@@ -833,6 +847,7 @@ events:
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\PowerShell\\7\\"
         - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\"
@@ -846,7 +861,7 @@ events:
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\HaoTang\\AppData\\Roaming\\npm"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Pandoc\\"
-        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\vcpkg\\downloads\\tools\\cmake-3.30.1-windows\\cmake-3.30.1-windows-i386\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -868,7 +883,7 @@ events:
       - "lib"
     candidate_directories:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/"
       - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Windows/System32/"
@@ -897,6 +912,7 @@ events:
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/PowerShell/7/"
       - "C:/Program Files/nodejs/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python311/Scripts/"
@@ -910,13 +926,13 @@ events:
       - "C:/Users/HaoTang/AppData/Local/Programs/Ollama/"
       - "C:/Users/HaoTang/AppData/Roaming/npm/"
       - "C:/Users/HaoTang/AppData/Local/Pandoc/"
-      - "C:/Program Files/CMake/bin/"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lib.com"
     found: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lib.exe"
     search_context:
       ENV{PATH}:
-        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\33768_1765960637568"
+        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\11988_1766072286659"
         - "C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\"
         - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\WINDOWS\\system32"
@@ -945,6 +961,7 @@ events:
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\PowerShell\\7\\"
         - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\"
@@ -958,7 +975,7 @@ events:
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\HaoTang\\AppData\\Roaming\\npm"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Pandoc\\"
-        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\vcpkg\\downloads\\tools\\cmake-3.30.1-windows\\cmake-3.30.1-windows-i386\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -982,7 +999,7 @@ events:
     names:
       - "rc"
     candidate_directories:
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/"
       - "C:/Program Files/Microsoft MPI/Bin/"
       - "C:/Windows/System32/"
@@ -1011,6 +1028,7 @@ events:
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/PowerShell/7/"
       - "C:/Program Files/nodejs/"
+      - "C:/Program Files/CMake/bin/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python311/Scripts/"
@@ -1024,7 +1042,7 @@ events:
       - "C:/Users/HaoTang/AppData/Local/Programs/Ollama/"
       - "C:/Users/HaoTang/AppData/Roaming/npm/"
       - "C:/Users/HaoTang/AppData/Local/Pandoc/"
-      - "C:/Program Files/CMake/bin/"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/"
       - "C:/Program Files/bin/"
       - "C:/Program Files/sbin/"
       - "C:/Program Files/"
@@ -1038,9 +1056,9 @@ events:
       - "C:/Program Files (x86)/SafeTrix/sbin/"
       - "C:/Program Files (x86)/SafeTrix/"
     searched_directories:
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/rc.com"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/rc.exe"
-      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/33768_1765960637568/rc"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/rc.com"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/rc.exe"
+      - "C:/Users/HaoTang/AppData/Local/fnm_multishells/11988_1766072286659/rc"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/rc.com"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/rc.exe"
       - "C:/Program Files (x86)/VMware/VMware Workstation/bin/rc"
@@ -1125,6 +1143,9 @@ events:
       - "C:/Program Files/nodejs/rc.com"
       - "C:/Program Files/nodejs/rc.exe"
       - "C:/Program Files/nodejs/rc"
+      - "C:/Program Files/CMake/bin/rc.com"
+      - "C:/Program Files/CMake/bin/rc.exe"
+      - "C:/Program Files/CMake/bin/rc"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/rc.com"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/rc.exe"
       - "C:/Users/HaoTang/AppData/Local/Programs/Python/Python312/Scripts/rc"
@@ -1164,9 +1185,9 @@ events:
       - "C:/Users/HaoTang/AppData/Local/Pandoc/rc.com"
       - "C:/Users/HaoTang/AppData/Local/Pandoc/rc.exe"
       - "C:/Users/HaoTang/AppData/Local/Pandoc/rc"
-      - "C:/Program Files/CMake/bin/rc.com"
-      - "C:/Program Files/CMake/bin/rc.exe"
-      - "C:/Program Files/CMake/bin/rc"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/rc.com"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/rc.exe"
+      - "C:/vcpkg/downloads/tools/cmake-3.30.1-windows/cmake-3.30.1-windows-i386/bin/rc"
       - "C:/Program Files/bin/rc.com"
       - "C:/Program Files/bin/rc.exe"
       - "C:/Program Files/bin/rc"
@@ -1206,7 +1227,7 @@ events:
     found: false
     search_context:
       ENV{PATH}:
-        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\33768_1765960637568"
+        - "C:\\Users\\HaoTang\\AppData\\Local\\fnm_multishells\\11988_1766072286659"
         - "C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\"
         - "C:\\Program Files\\Microsoft MPI\\Bin\\"
         - "C:\\WINDOWS\\system32"
@@ -1235,6 +1256,7 @@ events:
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\PowerShell\\7\\"
         - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\CMake\\bin"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python312\\"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\"
@@ -1248,7 +1270,7 @@ events:
         - "C:\\Users\\HaoTang\\AppData\\Local\\Programs\\Ollama"
         - "C:\\Users\\HaoTang\\AppData\\Roaming\\npm"
         - "C:\\Users\\HaoTang\\AppData\\Local\\Pandoc\\"
-        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\vcpkg\\downloads\\tools\\cmake-3.30.1-windows\\cmake-3.30.1-windows-i386\\bin"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/SafeTrix"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"
@@ -1264,8 +1286,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/CMakeScratch/TryCompile-5z6fjc"
-      binary: "C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/CMakeScratch/TryCompile-5z6fjc"
+      source: "C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/CMakeScratch/TryCompile-3ouq63"
+      binary: "C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/CMakeScratch/TryCompile-3ouq63"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1274,39 +1296,39 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/CMakeScratch/TryCompile-5z6fjc'
+        Change Dir: 'C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/CMakeScratch/TryCompile-3ouq63'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_3c73d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_af458.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         閫傜敤浜?.NET Framework MSBuild 鐗堟湰 17.14.23+b0019275e
-        鐢熸垚鍚姩鏃堕棿涓?2025/12/17 18:03:27銆?
+        鐢熸垚鍚姩鏃堕棿涓?2025/12/18 23:44:41銆?
         
-        鑺傜偣 1 涓婄殑椤圭洰鈥淐:\\Users\\HaoTang\\CLionProjects\\safetrix\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5z6fjc\\cmTC_3c73d.vcxproj鈥?榛樿鐩爣)銆?
+        鑺傜偣 1 涓婄殑椤圭洰鈥淐:\\Users\\HaoTang\\CLionProjects\\safetrix\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3ouq63\\cmTC_af458.vcxproj鈥?榛樿鐩爣)銆?
         PrepareForBuild:
           宸插惎鐢ㄧ粨鏋勫寲杈撳嚭銆傜紪璇戝櫒璇婃柇鐨勬牸寮忚缃皢鍙嶆槧閿欒灞傛缁撴瀯銆傛湁鍏宠缁嗕俊鎭紝璇峰弬闃?https://aka.ms/cpp/structured-output銆?
-          姝ｅ湪鍒涘缓鐩綍鈥淐:\\Users\\HaoTang\\CLionProjects\\safetrix\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5z6fjc\\Debug\\鈥濄€?
-          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_3c73d.dir\\Debug\\cmTC_3c73d.tlog\\鈥濄€?
+          姝ｅ湪鍒涘缓鐩綍鈥淐:\\Users\\HaoTang\\CLionProjects\\safetrix\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3ouq63\\Debug\\鈥濄€?
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_af458.dir\\Debug\\cmTC_af458.tlog\\鈥濄€?
         InitializeBuildStatus:
-          姝ｅ湪鍒涘缓鈥渃mTC_3c73d.dir\\Debug\\cmTC_3c73d.tlog\\unsuccessfulbuild鈥濓紝鍥犱负宸叉寚瀹氣€淎lwaysCreate鈥濄€?
-          姝ｅ湪瀵光€渃mTC_3c73d.dir\\Debug\\cmTC_3c73d.tlog\\unsuccessfulbuild鈥濇墽琛?Touch 浠诲姟銆?
+          姝ｅ湪鍒涘缓鈥渃mTC_af458.dir\\Debug\\cmTC_af458.tlog\\unsuccessfulbuild鈥濓紝鍥犱负宸叉寚瀹氣€淎lwaysCreate鈥濄€?
+          姝ｅ湪瀵光€渃mTC_af458.dir\\Debug\\cmTC_af458.tlog\\unsuccessfulbuild鈥濇墽琛?Touch 浠诲姟銆?
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_3c73d.dir\\Debug\\\\" /Fd"cmTC_3c73d.dir\\Debug\\vc143.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_af458.dir\\Debug\\\\" /Fd"cmTC_af458.dir\\Debug\\vc143.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
           鐢ㄤ簬 x64 鐨?Microsoft (R) C/C++ 浼樺寲缂栬瘧鍣?19.44.35217 鐗?
           鐗堟潈鎵€鏈?C) Microsoft Corporation銆備繚鐣欐墍鏈夋潈鍒┿€?
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_3c73d.dir\\Debug\\\\" /Fd"cmTC_3c73d.dir\\Debug\\vc143.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_af458.dir\\Debug\\\\" /Fd"cmTC_af458.dir\\Debug\\vc143.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\HaoTang\\CLionProjects\\safetrix\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5z6fjc\\Debug\\cmTC_3c73d.exe" /INCREMENTAL /ILK:"cmTC_3c73d.dir\\Debug\\cmTC_3c73d.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/CMakeScratch/TryCompile-5z6fjc/Debug/cmTC_3c73d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/CMakeScratch/TryCompile-5z6fjc/Debug/cmTC_3c73d.lib" /MACHINE:X64  /machine:x64 cmTC_3c73d.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_3c73d.vcxproj -> C:\\Users\\HaoTang\\CLionProjects\\safetrix\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5z6fjc\\Debug\\cmTC_3c73d.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\HaoTang\\CLionProjects\\safetrix\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3ouq63\\Debug\\cmTC_af458.exe" /INCREMENTAL /ILK:"cmTC_af458.dir\\Debug\\cmTC_af458.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/CMakeScratch/TryCompile-3ouq63/Debug/cmTC_af458.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/CMakeScratch/TryCompile-3ouq63/Debug/cmTC_af458.lib" /MACHINE:X64  /machine:x64 cmTC_af458.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_af458.vcxproj -> C:\\Users\\HaoTang\\CLionProjects\\safetrix\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3ouq63\\Debug\\cmTC_af458.exe
         FinalizeBuildStatus:
-          姝ｅ湪鍒犻櫎鏂囦欢鈥渃mTC_3c73d.dir\\Debug\\cmTC_3c73d.tlog\\unsuccessfulbuild鈥濄€?
-          姝ｅ湪瀵光€渃mTC_3c73d.dir\\Debug\\cmTC_3c73d.tlog\\cmTC_3c73d.lastbuildstate鈥濇墽琛?Touch 浠诲姟銆?
-        宸插畬鎴愮敓鎴愰」鐩€淐:\\Users\\HaoTang\\CLionProjects\\safetrix\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5z6fjc\\cmTC_3c73d.vcxproj鈥?榛樿鐩爣)鐨勬搷浣溿€?
+          姝ｅ湪鍒犻櫎鏂囦欢鈥渃mTC_af458.dir\\Debug\\cmTC_af458.tlog\\unsuccessfulbuild鈥濄€?
+          姝ｅ湪瀵光€渃mTC_af458.dir\\Debug\\cmTC_af458.tlog\\cmTC_af458.lastbuildstate鈥濇墽琛?Touch 浠诲姟銆?
+        宸插畬鎴愮敓鎴愰」鐩€淐:\\Users\\HaoTang\\CLionProjects\\safetrix\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3ouq63\\cmTC_af458.vcxproj鈥?榛樿鐩爣)鐨勬搷浣溿€?
         
         宸叉垚鍔熺敓鎴愩€?
             0 涓鍛?
             0 涓敊璇?
         
-        宸茬敤鏃堕棿 00:00:00.38
+        宸茬敤鏃堕棿 00:00:01.03
         
       exitCode: 0
   -

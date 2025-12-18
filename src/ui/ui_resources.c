@@ -1,4 +1,4 @@
-#include <stddef.h>
+﻿#include <stddef.h>
 
 // Resource functions for MainWindow
 // Note: prototypes are declared in include/ui/MainWindow.h
@@ -10,5 +10,5 @@ const char* UI_GetThemeColor()
 
 const char* UI_GetWelcomeText()
 {
-    return "Welcome to SafeTrix File Transfer System!";
+    return "欢迎使用 SafeTrix 文件传输系统！";
 }

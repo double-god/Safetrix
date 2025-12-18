@@ -1,4 +1,4 @@
-#include "ui/MainWindow.h"
+﻿#include "ui/MainWindow.h"
 #include "core/TaskManager.h"     // 引入任务管理器
 #include "core/TransferEngine.h"  // 引入传输引擎
 #include "utils/FileUtils.h"      // 引入工具
@@ -9,13 +9,9 @@
 // 定义一个回调函数，Core 层进度更新时会调用这个
 void OnUIProgressUpdate(int taskId, double percentage, double speedMbS)
 {
-    // 这里我们很难直接获取 MainWindow 指针，
-    // 在简单的 C 程序中，我们可以通过全局变量或传参 context 解决。
-    // 为了保持你目前的结构简单，我们在主循环里手动渲染，或者在这里打印日志。
-
-    // 实际的 UI 更新逻辑由 RunLoop 中的渲染负责，
-    // 但我们需要一个地方把百分比存下来。
-    // 简化起见，我们直接打印（控制台应用）：
+    // 在纯 C 程序里很难随时拿到 MainWindow 指针，通常需要全局变量或传递上下文参数。
+    // 为了保持结构简单，我们让主循环负责渲染，这里可以视情况打印日志。
+    // 实际 UI 更新由 RunLoop 完成，但我们仍需要保存最新进度，必要时可直接 printf。
     // printf("\rProgress: %.1f%% Speed: %.2f MB/s", percentage, speedMbS);
 }
 
@@ -40,15 +36,6 @@ void MainWindow_Show(MainWindow* win)
 // --- 专门为 UI 定义的适配回调 ---
 // 为了让回调能更新 MainWindow 的进度条，我们需要一个静态指针或者传递 context
 static MainWindow* g_currentWindow = NULL;
-
-void _ui_callback(int taskId, double percentage, double speed)
-{
-    if (g_currentWindow)
-    {
-        ProgressBar_Update(&g_currentWindow->main_progress_bar, (float)percentage);
-        ProgressBar_Render(&g_currentWindow->main_progress_bar);
-    }
-}
 
 // 辅助函数：生成一个测试文件
 static void CreateDummyFile(const char* filename, size_t sizeMB)
@@ -75,7 +62,7 @@ static void CreateDummyFile(const char* filename, size_t sizeMB)
     printf("[系统] 已创建测试文件 '%s' (%zu MB)\n", filename, sizeMB);
 }
 
-// UI回调：进度更新
+// UI 回调：进度更新
 static void _ui_progress_callback(int taskId, double percentage, double speed)
 {
     if (g_currentWindow)
@@ -85,7 +72,7 @@ static void _ui_progress_callback(int taskId, double percentage, double speed)
     }
 }
 
-// UI回调：错误处理
+// UI 回调：错误处理
 static void _ui_error_callback(int taskId, int errorCode, const char* msg)
 {
     printf("\n[任务 %d 错误] 代码: %d, 信息: %s\n", taskId, errorCode, msg);
@@ -209,5 +196,5 @@ void MainWindow_RunLoop(MainWindow* win)
 
 void MainWindow_Destroy(MainWindow* win)
 {
-    // 清理逻辑
+    // 预留的清理逻辑
 }
