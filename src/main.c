@@ -1,31 +1,31 @@
 #include <stdio.h>
 #include "ui/MainWindow.h"
+#include "data/Logger.h"      // 新增
+#include "utils/Algorithm.h"  // 新增
 
-// 假设这些头文件存在于 include/core/ 中
-// #include "core/TaskManager.h"
-// #include "core/Security.h"
+int main(int argc, char* argv[])
+{
+    // 1. 初始化基础服务
+    Logger_Init("data/app.log");
+    Algorithm_InitCRC32();
 
-int main(int argc, char* argv[]) {
-    printf("[System] Booting Safetrix...\n");
+    Logger_Log(LOG_INFO, "System Booting...");
 
-    // 1. 初始化 Core 层 (模拟)
-    // Security_Init();
-    // TaskManager_Init();
-    printf("[Core] Services initialized.\n");
+    // ... (中间的 TaskManager 和 Engine 初始化) ...
+    // InitTaskManager(); // 确保 TaskManager 内部会调用 Persistence_LoadTasks
 
-    // 2. 初始化 UI 层
+    // 2. 初始化 UI
     MainWindow appWindow;
     MainWindow_Init(&appWindow, "Safetrix v1.0");
 
-    // 3. 显示 UI 并进入主循环
+    // 3. 运行
     MainWindow_Show(&appWindow);
     MainWindow_RunLoop(&appWindow);
 
-    // 4. 清理资源并退出
+    // 4. 退出清理
     MainWindow_Destroy(&appWindow);
-
-    // TaskManager_Shutdown();
-    printf("[System] Shutdown complete.\n");
+    Logger_Log(LOG_INFO, "System Shutdown.");
+    Logger_Close();
 
     return 0;
 }

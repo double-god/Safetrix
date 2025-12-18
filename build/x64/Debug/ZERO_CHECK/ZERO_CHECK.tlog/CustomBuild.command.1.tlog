@@ -1,0 +1,10 @@
+^C:\USERS\HAOTANG\CLIONPROJECTS\SAFETRIX\BUILD\CMAKEFILES\32ABA44F3295ED11650856F90F8C1E50\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/HaoTang/CLionProjects/safetrix -BC:/Users/HaoTang/CLionProjects/safetrix/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/HaoTang/CLionProjects/safetrix/build/SafeTrix.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

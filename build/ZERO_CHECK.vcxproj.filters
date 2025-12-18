@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\HaoTang\CLionProjects\safetrix\build\CMakeFiles\32aba44f3295ed11650856f90f8c1e50\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{75FF3B5B-139A-370D-8B93-20FE36362972}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

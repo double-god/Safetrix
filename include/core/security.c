@@ -4,6 +4,8 @@
 #include "core/security.h"
 #include <string.h>
 
+// Deprecated: implementation moved to src/core/security.c
+
 void InitSecurity(CryptoContext* ctx, const char* password)
 {
     // 简单的密钥生成策略：取密码第一个字符

@@ -1,0 +1,3 @@
+C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/SafeTrix.dir
+C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/ZERO_CHECK.dir

@@ -20,10 +20,7 @@ list(LENGTH SOURCES SOURCES_COUNT)
 message(STATUS "Discovered ${SOURCES_COUNT} C source files in src/")
 
 # Create executable from all discovered sources (include headers so IDEs list them)
-add_executable(SafeTrix ${SOURCES} ${HEADERS}
-        include/core/security.c
-        include/core/transfer_engine.c
-        include/core/task_manager.c)
+add_executable(SafeTrix ${SOURCES} ${HEADERS})
 
 # Prefer modern target-based configuration
 target_include_directories(SafeTrix PRIVATE ${INCLUDE_DIR})

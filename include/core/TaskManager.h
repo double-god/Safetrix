@@ -1,7 +1,7 @@
 #ifndef CORE_TASK_MANAGER_H
 #define CORE_TASK_MANAGER_H
 
-#include "common/app_types.h"
+#include "common/AppTypes.h"
 
 void InitTaskManager(void);
 int AddTask(const char* src, const char* dest, int priority);

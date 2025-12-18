@@ -1,0 +1,11 @@
+C:\Users\HaoTang\CLionProjects\safetrix\src\core\security.c;C:\Users\HaoTang\CLionProjects\safetrix\build\SafeTrix.dir\Debug\security.obj
+C:\Users\HaoTang\CLionProjects\safetrix\src\core\task_manager.c;C:\Users\HaoTang\CLionProjects\safetrix\build\SafeTrix.dir\Debug\task_manager.obj
+C:\Users\HaoTang\CLionProjects\safetrix\src\core\transfer_engine.c;C:\Users\HaoTang\CLionProjects\safetrix\build\SafeTrix.dir\Debug\transfer_engine.obj
+C:\Users\HaoTang\CLionProjects\safetrix\src\data\logger.c;C:\Users\HaoTang\CLionProjects\safetrix\build\SafeTrix.dir\Debug\logger.obj
+C:\Users\HaoTang\CLionProjects\safetrix\src\data\persistence.c;C:\Users\HaoTang\CLionProjects\safetrix\build\SafeTrix.dir\Debug\persistence.obj
+C:\Users\HaoTang\CLionProjects\safetrix\src\main.c;C:\Users\HaoTang\CLionProjects\safetrix\build\SafeTrix.dir\Debug\main.obj
+C:\Users\HaoTang\CLionProjects\safetrix\src\ui\main_window.c;C:\Users\HaoTang\CLionProjects\safetrix\build\SafeTrix.dir\Debug\main_window.obj
+C:\Users\HaoTang\CLionProjects\safetrix\src\ui\progress_bar.c;C:\Users\HaoTang\CLionProjects\safetrix\build\SafeTrix.dir\Debug\progress_bar.obj
+C:\Users\HaoTang\CLionProjects\safetrix\src\ui\ui_resources.c;C:\Users\HaoTang\CLionProjects\safetrix\build\SafeTrix.dir\Debug\ui_resources.obj
+C:\Users\HaoTang\CLionProjects\safetrix\src\utils\algorithm.c;C:\Users\HaoTang\CLionProjects\safetrix\build\SafeTrix.dir\Debug\algorithm.obj
+C:\Users\HaoTang\CLionProjects\safetrix\src\utils\file_utils.c;C:\Users\HaoTang\CLionProjects\safetrix\build\SafeTrix.dir\Debug\file_utils.obj

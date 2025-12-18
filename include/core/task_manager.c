@@ -1,21 +1,27 @@
-#include "core/task_manager.h"
-#include "common/error_code.h"
-#include <string.h>
+/
+Deprecated: implementation
+ moved to src
+/
+core
+/
+task_manager
+.
+c
 
-#define MAX_TASKS 100
+// 头部引入头文件
+#include "utils/FileUtils.h"
 
-static TransferTask g_tasks[MAX_TASKS];
-static int g_taskCount = 0;
-
-void InitTaskManager(void)
-{
-    g_taskCount = 0;
-    // F-10: 这里应该加载 safetrix.db，为简化演示省略
-}
+// ... (其他代码保持不变)
 
 int AddTask(const char* src, const char* dest, int priority)
 {
     if (g_taskCount >= MAX_TASKS) return ERR_TASK_FULL;
+
+    // 检查源文件是否存在
+    if (!FileUtils_Exists(src))
+    {
+        return ERR_FILE_OPEN; // 或者定义一个 ERR_FILE_NOT_FOUND
+    }
 
     TransferTask* t = &g_tasks[g_taskCount];
     t->id = g_taskCount + 1;
@@ -24,7 +30,10 @@ int AddTask(const char* src, const char* dest, int priority)
     t->priority = priority;
     t->status = TASK_WAITING;
     t->currentOffset = 0;
-    t->totalSize = 1024 * 1024 * 10; // 模拟 10MB 文件大小，实际应调用 stat 获取
+
+    // 【修改点】获取真实文件大小
+    t->totalSize = FileUtils_GetFileSize(src);
+
     t->onProgress = NULL;
     t->onError = NULL;
 
@@ -32,29 +41,4 @@ int AddTask(const char* src, const char* dest, int priority)
     return t->id;
 }
 
-TransferTask* GetTaskById(int id)
-{
-    for (int i = 0; i < g_taskCount; ++i)
-    {
-        if (g_tasks[i].id == id) return &g_tasks[i];
-    }
-    return NULL;
-}
-
-TransferTask* GetTaskList(int* count)
-{
-    if (count) *count = g_taskCount;
-    return g_tasks;
-}
-
-void SetTaskCallbacks(int taskId, OnProgressCallback onProgress, OnErrorCallback onError)
-{
-    TransferTask* t = GetTaskById(taskId);
-    if (t)
-    {
-        t->onProgress = onProgress;
-        t->onError = onError;
-    }
-} //
-// Created by HaoTang on 2025/12/17.
-//
+// ... (其他代码保持不变)
