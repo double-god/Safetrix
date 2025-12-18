@@ -1,5 +1,4 @@
-// ...existing code...
-#ifndef UTILS_ALGORITHM_H
+﻿#ifndef UTILS_ALGORITHM_H
 #define UTILS_ALGORITHM_H
 
 #include <stdint.h>

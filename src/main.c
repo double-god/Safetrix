@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include "ui/MainWindow.h"
 #include "data/Logger.h"      // 新增
 #include "utils/Algorithm.h"  // 新增

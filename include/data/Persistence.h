@@ -1,4 +1,4 @@
-#ifndef DATA_PERSISTENCE_H
+﻿#ifndef DATA_PERSISTENCE_H
 #define DATA_PERSISTENCE_H
 
 #include "common/AppTypes.h"

@@ -1,4 +1,4 @@
-#ifndef CORE_TRANSFER_ENGINE_H
+﻿#ifndef CORE_TRANSFER_ENGINE_H
 #define CORE_TRANSFER_ENGINE_H
 
 #include "common/AppTypes.h"

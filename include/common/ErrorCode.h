@@ -1,4 +1,4 @@
-#ifndef COMMON_ERROR_CODE_H
+﻿#ifndef COMMON_ERROR_CODE_H
 #define COMMON_ERROR_CODE_H
 
 #define ERR_SUCCESS         0

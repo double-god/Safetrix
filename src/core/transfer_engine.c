@@ -1,4 +1,4 @@
-#include "core/TaskManager.h"
+﻿#include "core/TaskManager.h"
 #include "core/security.h"
 #include "common/ErrorCode.h"
 #include "data/Logger.h"

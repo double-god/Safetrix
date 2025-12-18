@@ -1,4 +1,4 @@
-#include <stddef.h>
+﻿#include <stddef.h>
 
 // Resource functions for MainWindow
 // Note: prototypes are declared in include/ui/MainWindow.h

@@ -1,4 +1,4 @@
-// ...existing code...
+﻿// ...existing code...
 #include "utils/Algorithm.h"
 #include <stdint.h>
 #include <stddef.h>
@@ -6,7 +6,7 @@
 static uint32_t crc_table[256];
 static int crc_table_computed = 0;
 
-// 生成 CRC 表
+
 static void make_crc_table(void)
 {
     uint32_t c;
