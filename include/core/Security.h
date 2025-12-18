@@ -7,7 +7,9 @@
 // 上下文结构，用于流式加密
 typedef struct
 {
-    uint8_t key; // 简化版：使用单字节异或
+    uint8_t key[32]; // 扩展密钥长度
+    size_t keyLen;
+    size_t keyIndex; // 当前密钥流位置
 } CryptoContext;
 
 void InitSecurity(CryptoContext* ctx, const char* password);
