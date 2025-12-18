@@ -1,10 +1,22 @@
 ﻿#include <stdio.h>
+#ifdef _WIN32
+#include <windows.h>
+#endif
 #include "ui/MainWindow.h"
 #include "data/Logger.h"      // 新增
 #include "utils/Algorithm.h"  // 新增
 
 int main(int argc, char* argv[])
 {
+#ifdef _WIN32
+    // 设置控制台输入和输出编码为 UTF-8，解决中文乱码问题
+    SetConsoleCP(65001);
+    if (!SetConsoleOutputCP(65001))
+    {
+        fprintf(stderr, "Warning: Failed to set console output CP to 65001. Error: %lu\n", GetLastError());
+    }
+#endif
+
     // 1. 初始化基础服务
     Logger_Init("data/app.log");
     Algorithm_InitCRC32();

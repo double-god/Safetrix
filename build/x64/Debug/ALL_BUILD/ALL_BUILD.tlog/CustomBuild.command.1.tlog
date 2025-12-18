@@ -1,0 +1,10 @@
+^C:\USERS\HAOTANG\CLIONPROJECTS\SAFETRIX\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/HaoTang/CLionProjects/safetrix -BC:/Users/HaoTang/CLionProjects/safetrix/build --check-stamp-file C:/Users/HaoTang/CLionProjects/safetrix/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
