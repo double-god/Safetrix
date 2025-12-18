@@ -1,6 +1,7 @@
 #include "core/TaskManager.h"
 #include "core/security.h"
 #include "common/ErrorCode.h"
+#include "data/Logger.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -52,6 +53,8 @@ int RunTask(TransferTask* task)
         }
 
         task->currentOffset += bytesRead;
+        TaskManager_UpdateTask(task);
+        TaskManager_Sync();
 
         if (task->onProgress && (task->currentOffset % (CHUNK_SIZE * 10) == 0))
         {
@@ -65,6 +68,8 @@ int RunTask(TransferTask* task)
     }
 
     task->status = TASK_COMPLETED;
+    TaskManager_UpdateTask(task);
+    TaskManager_Sync();
     if (task->onProgress) task->onProgress(task->id, 100.0, 0.0);
 
     fclose(fpSrc);

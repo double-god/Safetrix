@@ -1,13 +1,25 @@
 #include "data/Persistence.h"
+#include "data/Logger.h"
 #include <stdio.h>
+#include <string.h>
 
 // 文件头标识，用于校验文件格式是否合法
 static const uint32_t DB_MAGIC = 0x53465458; // ASCII "SFTX"
 
 int Persistence_SaveTasks(const char* dbPath, TransferTask* tasks, int count)
 {
+    if (!dbPath)
+    {
+        Logger_Log(LOG_ERROR, "Persistence_SaveTasks: dbPath 为空");
+        return -1;
+    }
+
     FILE* fp = fopen(dbPath, "wb");
-    if (!fp) return -1;
+    if (!fp)
+    {
+        Logger_Log(LOG_ERROR, "无法打开任务数据库: %s", dbPath);
+        return -1;
+    }
 
     // 1. 写入魔数
     fwrite(&DB_MAGIC, sizeof(uint32_t), 1, fp);
@@ -28,6 +40,12 @@ int Persistence_SaveTasks(const char* dbPath, TransferTask* tasks, int count)
 
 int Persistence_LoadTasks(const char* dbPath, TransferTask* outTasks, int maxCount)
 {
+    if (!dbPath)
+    {
+        Logger_Log(LOG_ERROR, "Persistence_LoadTasks: dbPath 为空");
+        return -1;
+    }
+
     FILE* fp = fopen(dbPath, "rb");
     if (!fp) return 0; // 文件不存在则返回0个任务
 
@@ -36,6 +54,7 @@ int Persistence_LoadTasks(const char* dbPath, TransferTask* outTasks, int maxCou
     if (fread(&magic, sizeof(uint32_t), 1, fp) != 1 || magic != DB_MAGIC)
     {
         fclose(fp);
+        Logger_Log(LOG_WARNING, "任务数据库格式不正确，忽略");
         return 0; // 文件格式不对
     }
 
