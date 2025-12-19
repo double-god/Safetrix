@@ -1,0 +1,40 @@
+# --- 构建目录 (Build Directories) ---
+build/
+cmake-build-debug/
+cmake-build-release/
+out/
+bin/
+
+# --- 编译产物 (Compiled Object files) ---
+*.o
+*.obj
+*.res
+*.idb
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.a
+*.so
+*.dll
+*.dylib
+*.exe
+
+# --- IDE 配置文件 (IDE Settings) ---
+.idea/
+.vscode/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.user
+*.suo
+
+# --- 操作系统临时文件 (OS Files) ---
+.DS_Store
+Thumbs.db
+
+# --- CMake 缓存文件 ---
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
