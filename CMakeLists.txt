@@ -12,21 +12,26 @@ include_directories(${INCLUDE_DIR})
 
 # Discover all .c source files under src/ (recursively) and header files under include/
 # CONFIGURE_DEPENDS makes generators re-run when files are added/removed during development
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/src/*.c")
+file(GLOB_RECURSE ALL_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/src/*.c")
 file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS "${INCLUDE_DIR}/*.h")
 
 # Report how many sources were found (helpful when debugging CMake behavior)
-list(LENGTH SOURCES SOURCES_COUNT)
-message(STATUS "Discovered ${SOURCES_COUNT} C source files in src/")
+list(LENGTH ALL_SOURCES ALL_SOURCES_COUNT)
+message(STATUS "Discovered ${ALL_SOURCES_COUNT} C source files in src/")
 
-# Create executable from all discovered sources (include headers so IDEs list them)
-# Exclude test sources from the main executable to avoid duplicate `main` symbols
-list(FILTER SOURCES EXCLUDE REGEX ".*/src/tests/.*\\.c$")
-add_executable(SafeTrix ${SOURCES} ${HEADERS}
-        src/data/persistence.h)
+# MAIN_SOURCES: exclude test sources
+set(MAIN_SOURCES ${ALL_SOURCES})
+list(FILTER MAIN_SOURCES EXCLUDE REGEX ".*/src/tests/.*\\.c$")
 
-# Build tests as a separate executable so they don't conflict with the main program
-add_executable(SafeTrixTests src/tests/test_security_flow.c)
+# TEST_SOURCES: include everything except main.c (so tests can link core implementation)
+set(TEST_SOURCES ${ALL_SOURCES})
+list(FILTER TEST_SOURCES EXCLUDE REGEX ".*/src/main\\.c$")
+
+# Create executable for main application using MAIN_SOURCES
+add_executable(SafeTrix ${MAIN_SOURCES} ${HEADERS} src/data/persistence.h)
+
+# Create tests executable linking core implementation (no main.c)
+add_executable(SafeTrixTests ${TEST_SOURCES} src/tests/test_security_flow.c)
 
 if (MSVC)
     target_compile_options(SafeTrix PRIVATE /utf-8)
@@ -36,6 +41,6 @@ endif ()
 # Prefer modern target-based configuration
 target_include_directories(SafeTrix PRIVATE ${INCLUDE_DIR})
 target_include_directories(SafeTrixTests PRIVATE ${INCLUDE_DIR})
-# Require C11 for this target
+# Require C11 for these targets
 target_compile_features(SafeTrix PRIVATE c_std_11)
 target_compile_features(SafeTrixTests PRIVATE c_std_11)

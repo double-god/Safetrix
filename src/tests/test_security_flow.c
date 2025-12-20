@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 #include "common/AppTypes.h"
 #include "core/TaskManager.h"
 #include "core/TransferEngine.h"
@@ -48,6 +52,11 @@ static int create_dummy_file(const char* path, size_t sizeMB)
 
 int main(void)
 {
+#ifdef _WIN32
+    // 设置控制台输出编码为 UTF-8，防止中文乱码
+    SetConsoleOutputCP(65001);
+#endif
+
     printf("=== SafeTrix 测试流程演示 ===\n");
 
     // 初始化 TaskManager（会尝试从磁盘加载历史任务）
