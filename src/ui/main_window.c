@@ -6,6 +6,25 @@
 #include <string.h>
 #include <stdlib.h>
 
+// 安全的读取一行输入，去掉末尾换行符，支持路径里有空格
+static void SafeGetLine(char* buffer, int size)
+{
+    if (!buffer || size <= 0) return;
+    if (fgets(buffer, size, stdin))
+    {
+        size_t len = strlen(buffer);
+        if (len > 0 && buffer[len - 1] == '\n')
+        {
+            buffer[len - 1] = '\0';
+        }
+    }
+    else
+    {
+        // 如果读取失败，确保字符串为空
+        if (size > 0) buffer[0] = '\0';
+    }
+}
+
 // 定义一个回调函数，Core 层进度更新时会调用这个
 void OnUIProgressUpdate(int taskId, double percentage, double speedMbS)
 {
@@ -104,7 +123,9 @@ void MainWindow_RunLoop(MainWindow* win)
         printf("========================================\n");
         printf("请输入编号: ");
 
-        if (scanf("%s", inputBuffer) != 1) break;
+        // 使用 SafeGetLine 读取整行，支持空格，并避免 scanf 的不安全问题
+        SafeGetLine(inputBuffer, (int)sizeof(inputBuffer));
+        if (strlen(inputBuffer) == 0) continue; // 空输入忽略
         int choice = atoi(inputBuffer);
 
         switch (choice)
@@ -116,22 +137,44 @@ void MainWindow_RunLoop(MainWindow* win)
             }
         case 2:
             {
-                char src[128], dest[128];
-                printf("请输入源文件路径: ");
-                scanf("%s", src);
-                printf("请输入目标文件路径: ");
-                scanf("%s", dest);
+                char src[512], dest[512];
+
+                printf("\n--- 添加任务 (输入空行取消) ---\n");
+                printf("提示：支持绝对路径 (如 C:\\Data\\file.txt) 或相对路径，路径可包含空格。\n");
+
+                printf("源文件路径: ");
+                SafeGetLine(src, (int)sizeof(src));
+                if (strlen(src) == 0)
+                {
+                    printf("已取消。\n");
+                    break;
+                }
+
+                if (!FileUtils_Exists(src))
+                {
+                    printf("[错误] 找不到文件: %s\n", src);
+                    break;
+                }
+
+                printf("目标文件路径: ");
+                SafeGetLine(dest, (int)sizeof(dest));
+                if (strlen(dest) == 0)
+                {
+                    printf("已取消。\n");
+                    break;
+                }
 
                 int id = AddTask(src, dest, 1);
                 if (id > 0)
                 {
-                    printf("[成功] 任务已创建，编号: %d\n", id);
+                    printf("[成功] 任务已加入队列 (ID: %d)。\n", id);
+                    printf("提示：请选择菜单 '4' 开始传输。\n");
                     // 默认绑定回调
                     SetTaskCallbacks(id, _ui_progress_callback, _ui_error_callback);
                 }
                 else
                 {
-                    printf("[错误] 任务创建失败。\n");
+                    printf("[错误] 任务创建失败 (错误码: %d)\n", id);
                 }
                 break;
             }
@@ -164,21 +207,26 @@ void MainWindow_RunLoop(MainWindow* win)
             }
         case 4:
             {
+                char idBuf[64];
                 printf("请输入需要启动的任务编号: ");
-                int runId;
-                if (scanf("%d", &runId) == 1)
+                SafeGetLine(idBuf, (int)sizeof(idBuf));
+                if (strlen(idBuf) == 0)
                 {
-                    TransferTask* task = GetTaskById(runId);
-                    if (task)
-                    {
-                        printf("[系统] 正在启动任务 %d ...\n", runId);
-                        RunTask(task);
-                        printf("\n[系统] 任务 %d 已结束。\n", runId);
-                    }
-                    else
-                    {
-                        printf("[警告] 未找到该任务。\n");
-                    }
+                    printf("已取消。\n");
+                    break;
+                }
+                int runId = atoi(idBuf);
+                TransferTask* task = GetTaskById(runId);
+                if (task)
+                {
+                    printf("[系统] 正在启动任务 %d ... (该操作为阻塞式执行，按 Ctrl+C 可中断)\n", runId);
+                    // 如果需要非阻塞执行，应将 RunTask 放到线程中或改为状态机
+                    RunTask(task);
+                    printf("\n[系统] 任务 %d 已结束。\n", runId);
+                }
+                else
+                {
+                    printf("[警告] 未找到该任务。\n");
                 }
                 break;
             }
