@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/stat.h> // 用于检测目标路径是否为目录
 
 // 安全的读取一行输入，去掉末尾换行符，支持路径里有空格
 static void SafeGetLine(char* buffer, int size)
@@ -162,6 +163,54 @@ void MainWindow_RunLoop(MainWindow* win)
                 {
                     printf("已取消。\n");
                     break;
+                }
+
+                // --- 新增: 如果 dest 是目录，或用户输入以分隔符结尾（尽管路径可能不存在），则自动拼接源文件名 ---
+                struct stat statbuf;
+                int stat_ok = (stat(dest, &statbuf) == 0);
+                int is_dir = 0;
+                if (stat_ok)
+                {
+                    is_dir = (statbuf.st_mode & S_IFDIR) != 0;
+                }
+                else
+                {
+                    // stat 失败（路径不存在）——如果用户输入以分隔符结尾，我们也把它当作目录处理
+                    size_t dlen_tmp = strlen(dest);
+                    if (dlen_tmp > 0 && (dest[dlen_tmp - 1] == '\\' || dest[dlen_tmp - 1] == '/'))
+                    {
+                        is_dir = 1;
+                    }
+                }
+
+                if (is_dir)
+                {
+                    // 提取 src 的文件名部分
+                    const char* filename = NULL;
+                    const char* p = strrchr(src, '\\');
+                    const char* p2 = strrchr(src, '/');
+                    if (p && p2) filename = (p > p2) ? p : p2;
+                    else if (p) filename = p;
+                    else if (p2) filename = p2;
+                    else filename = src;
+                    if (filename != src && (*filename == '\\' || *filename == '/')) filename++;
+
+                    // 处理 dest 末尾是否已有分隔符
+                    size_t dlen = strlen(dest);
+                    char newDest[1024];
+                    if (dlen > 0 && (dest[dlen - 1] == '\\' || dest[dlen - 1] == '/'))
+                    {
+                        snprintf(newDest, sizeof(newDest), "%s%s", dest, filename);
+                    }
+                    else
+                    {
+                        snprintf(newDest, sizeof(newDest), "%s\\%s", dest, filename);
+                    }
+
+                    // 更新 dest
+                    strncpy(dest, newDest, sizeof(dest) - 1);
+                    dest[sizeof(dest) - 1] = '\0';
+                    printf("[智能修正] 检测到目标是目录，已自动修改为: %s\n", dest);
                 }
 
                 int id = AddTask(src, dest, 1);
