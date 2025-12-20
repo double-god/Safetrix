@@ -165,6 +165,39 @@ void MainWindow_RunLoop(MainWindow* win)
                     break;
                 }
 
+                // --- 启发式规则: 如果 src 有扩展名但 dest 没有扩展名，则把 dest 当作目录处理 (追加分隔符) ---
+                {
+                    const char* src_fname = strrchr(src, '\\');
+                    const char* src_fname2 = strrchr(src, '/');
+                    const char* src_name = src;
+                    if (src_fname && src_fname > src_name) src_name = src_fname + 1;
+                    if (src_fname2 && src_fname2 > src_name) src_name = src_fname2 + 1;
+                    const char* src_dot = strrchr(src_name, '.');
+
+                    const char* dest_fname = strrchr(dest, '\\');
+                    const char* dest_fname2 = strrchr(dest, '/');
+                    const char* dest_name = dest;
+                    if (dest_fname && dest_fname > dest_name) dest_name = dest_fname + 1;
+                    if (dest_fname2 && dest_fname2 > dest_name) dest_name = dest_fname2 + 1;
+                    const char* dest_dot = strrchr(dest_name, '.');
+
+                    if (src_dot != NULL && dest_dot == NULL)
+                    {
+                        // src 有扩展名，dest 没有；将 dest 末尾追加分隔符以触发目录拼接逻辑
+                        size_t dlen_now = strlen(dest);
+                        if (dlen_now + 1 < sizeof(dest))
+                        {
+                            // 如果末尾没有分隔符就添加
+                            if (dlen_now == 0 || (dest[dlen_now - 1] != '\\' && dest[dlen_now - 1] != '/'))
+                            {
+                                dest[dlen_now] = '\\';
+                                dest[dlen_now + 1] = '\0';
+                                printf("[提示] 目标看起来像目录，已自动追加分隔符以便拼接文件名。\n");
+                            }
+                        }
+                    }
+                }
+
                 // --- 新增: 如果 dest 是目录，或用户输入以分隔符结尾（尽管路径可能不存在），则自动拼接源文件名 ---
                 struct stat statbuf;
                 int stat_ok = (stat(dest, &statbuf) == 0);

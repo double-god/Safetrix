@@ -9,12 +9,9 @@
 int main(int argc, char* argv[])
 {
 #ifdef _WIN32
-    // 设置控制台输入和输出编码为 UTF-8，解决中文乱码问题
-    SetConsoleCP(65001);
-    if (!SetConsoleOutputCP(65001))
-    {
-        fprintf(stderr, "Warning: Failed to set console output CP to 65001. Error: %lu\n", GetLastError());
-    }
+    // 恢复使用系统默认控制台编码（注释掉强制 UTF-8），避免与文件系统 API 的编码不匹配
+    // SetConsoleCP(65001);
+    // SetConsoleOutputCP(65001);
 #endif
 
     // 1. 初始化基础服务

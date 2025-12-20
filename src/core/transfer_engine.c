@@ -5,8 +5,132 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+
+#ifdef _WIN32
+#include <direct.h>
+#include <windows.h>
+#include <wchar.h>
+#define MKDIR(path) _mkdir(path)
+#else
+#include <sys/stat.h>
+#include <sys/types.h>
+#define MKDIR(path) mkdir(path, 0755)
+#endif
 
 #define CHUNK_SIZE 4096
+
+// Helper: create parent directories recursively for a given path
+static int ensure_parent_dir_exists(const char* path)
+{
+    if (!path) return -1;
+
+    char tmp[1024];
+    strncpy(tmp, path, sizeof(tmp) - 1);
+    tmp[sizeof(tmp) - 1] = '\0';
+
+    // Strip trailing separators
+    size_t tlen = strlen(tmp);
+    while (tlen > 0 && (tmp[tlen - 1] == '\\' || tmp[tlen - 1] == '/'))
+    {
+        tmp[tlen - 1] = '\0';
+        tlen--;
+    }
+    if (tlen == 0) return -1;
+
+    // Find last separator to get parent directory
+    char* last_sep1 = strrchr(tmp, '\\');
+    char* last_sep2 = strrchr(tmp, '/');
+    char* last_sep = last_sep1 > last_sep2 ? last_sep1 : last_sep2;
+    if (!last_sep) return 0; // no parent directory
+
+    // Temporarily terminate string at parent dir
+    *last_sep = '\0';
+
+    // Build and create each component
+    char accum[1024] = "";
+    char* p = tmp;
+
+    // Handle Windows drive letter like "C:\" -> start accum with "C:\"
+    if (strlen(tmp) >= 2 && tmp[1] == ':')
+    {
+        accum[0] = tmp[0];
+        accum[1] = ':';
+        accum[2] = '\\';
+        accum[3] = '\0';
+        p = tmp + 3; // skip "C:\"
+    }
+
+    while (p && *p)
+    {
+        // find next separator or end
+        char* sep = p;
+        while (*sep && *sep != '\\' && *sep != '/') sep++;
+        size_t seglen = sep - p;
+
+        // append separator if needed
+        if (accum[0] != '\0' && accum[strlen(accum) - 1] != '\\')
+        {
+            strncat(accum, "\\", sizeof(accum) - strlen(accum) - 1);
+        }
+
+        // append segment
+        strncat(accum, p, (sizeof(accum) - strlen(accum) - 1) < seglen ? (sizeof(accum) - strlen(accum) - 1) : seglen);
+
+        // try to create
+        MKDIR(accum);
+
+        if (!*sep) break;
+        p = sep + 1;
+    }
+
+    return 0;
+}
+
+// Cross-platform fopen wrappers that accept multibyte char* paths and use wide APIs on Windows
+#ifdef _WIN32
+static wchar_t* mbcs_to_wide_alloc_local(const char* s)
+{
+    if (!s) return NULL;
+    int needed = MultiByteToWideChar(CP_ACP, 0, s, -1, NULL, 0);
+    if (needed <= 0) return NULL;
+    wchar_t* w = (wchar_t*)malloc(sizeof(wchar_t) * needed);
+    if (!w) return NULL;
+    MultiByteToWideChar(CP_ACP, 0, s, -1, w, needed);
+    return w;
+}
+
+static FILE* fopen_rbin(const char* path)
+{
+    wchar_t* w = mbcs_to_wide_alloc_local(path);
+    if (!w) return NULL;
+    FILE* f = _wfopen(w, L"rb");
+    free(w);
+    return f;
+}
+
+static FILE* fopen_rwb(const char* path)
+{
+    wchar_t* w = mbcs_to_wide_alloc_local(path);
+    if (!w) return NULL;
+    FILE* f = _wfopen(w, L"r+b");
+    free(w);
+    return f;
+}
+
+static FILE* fopen_wb(const char* path)
+{
+    wchar_t* w = mbcs_to_wide_alloc_local(path);
+    if (!w) return NULL;
+    FILE* f = _wfopen(w, L"wb");
+    free(w);
+    return f;
+}
+#else
+static FILE* fopen_rbin(const char* path) { return fopen(path, "rb"); }
+static FILE* fopen_rwb(const char* path) { return fopen(path, "r+b"); }
+static FILE* fopen_wb(const char* path) { return fopen(path, "wb"); }
+#endif
 
 int InitTransferEngine(void)
 {
@@ -17,7 +141,7 @@ int RunTask(TransferTask* task)
 {
     if (!task) return -1;
 
-    FILE* fpSrc = fopen(task->srcPath, "rb");
+    FILE* fpSrc = fopen_rbin(task->srcPath);
     if (!fpSrc)
     {
         if (task->onError) task->onError(task->id, -1, "Cannot open source file");
@@ -25,16 +149,21 @@ int RunTask(TransferTask* task)
     }
 
     // 打开目标文件为可读写（以便支持断点续传），若不存在则创建
-    FILE* fpDest = fopen(task->destPath, "r+b");
+    FILE* fpDest = fopen_rwb(task->destPath);
     if (!fpDest)
     {
-        // 目标文件不存在，创建新文件
-        fpDest = fopen(task->destPath, "wb");
+        // 尝试创建父目录后再创建目标文件
+        ensure_parent_dir_exists(task->destPath);
+        fpDest = fopen_rwb(task->destPath);
         if (!fpDest)
         {
-            fclose(fpSrc);
-            if (task->onError) task->onError(task->id, -1, "Cannot create dest file");
-            return -1;
+            fpDest = fopen_wb(task->destPath);
+            if (!fpDest)
+            {
+                fclose(fpSrc);
+                if (task->onError) task->onError(task->id, -1, "Cannot create dest file");
+                return -1;
+            }
         }
     }
 
