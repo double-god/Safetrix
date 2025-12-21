@@ -2,6 +2,7 @@
 #include "core/security.h"
 #include "common/ErrorCode.h"
 #include "data/Logger.h"
+#include "utils/FileUtils.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -11,11 +12,9 @@
 #include <direct.h>
 #include <windows.h>
 #include <wchar.h>
-#define MKDIR(path) _mkdir(path)
 #else
 #include <sys/stat.h>
 #include <sys/types.h>
-#define MKDIR(path) mkdir(path, 0755)
 #endif
 
 #define CHUNK_SIZE 4096
@@ -78,7 +77,7 @@ static int ensure_parent_dir_exists(const char* path)
         strncat(accum, p, (sizeof(accum) - strlen(accum) - 1) < seglen ? (sizeof(accum) - strlen(accum) - 1) : seglen);
 
         // try to create
-        MKDIR(accum);
+        FileUtils_Mkdir(accum);
 
         if (!*sep) break;
         p = sep + 1;
@@ -86,51 +85,6 @@ static int ensure_parent_dir_exists(const char* path)
 
     return 0;
 }
-
-// Cross-platform fopen wrappers that accept multibyte char* paths and use wide APIs on Windows
-#ifdef _WIN32
-static wchar_t* mbcs_to_wide_alloc_local(const char* s)
-{
-    if (!s) return NULL;
-    int needed = MultiByteToWideChar(CP_ACP, 0, s, -1, NULL, 0);
-    if (needed <= 0) return NULL;
-    wchar_t* w = (wchar_t*)malloc(sizeof(wchar_t) * needed);
-    if (!w) return NULL;
-    MultiByteToWideChar(CP_ACP, 0, s, -1, w, needed);
-    return w;
-}
-
-static FILE* fopen_rbin(const char* path)
-{
-    wchar_t* w = mbcs_to_wide_alloc_local(path);
-    if (!w) return NULL;
-    FILE* f = _wfopen(w, L"rb");
-    free(w);
-    return f;
-}
-
-static FILE* fopen_rwb(const char* path)
-{
-    wchar_t* w = mbcs_to_wide_alloc_local(path);
-    if (!w) return NULL;
-    FILE* f = _wfopen(w, L"r+b");
-    free(w);
-    return f;
-}
-
-static FILE* fopen_wb(const char* path)
-{
-    wchar_t* w = mbcs_to_wide_alloc_local(path);
-    if (!w) return NULL;
-    FILE* f = _wfopen(w, L"wb");
-    free(w);
-    return f;
-}
-#else
-static FILE* fopen_rbin(const char* path) { return fopen(path, "rb"); }
-static FILE* fopen_rwb(const char* path) { return fopen(path, "r+b"); }
-static FILE* fopen_wb(const char* path) { return fopen(path, "wb"); }
-#endif
 
 int InitTransferEngine(void)
 {
@@ -141,7 +95,7 @@ int RunTask(TransferTask* task)
 {
     if (!task) return -1;
 
-    FILE* fpSrc = fopen_rbin(task->srcPath);
+    FILE* fpSrc = FileUtils_OpenFileUTF8(task->srcPath, "rb");
     if (!fpSrc)
     {
         if (task->onError) task->onError(task->id, -1, "Cannot open source file");
@@ -149,15 +103,15 @@ int RunTask(TransferTask* task)
     }
 
     // 打开目标文件为可读写（以便支持断点续传），若不存在则创建
-    FILE* fpDest = fopen_rwb(task->destPath);
+    FILE* fpDest = FileUtils_OpenFileUTF8(task->destPath, "r+b");
     if (!fpDest)
     {
         // 尝试创建父目录后再创建目标文件
         ensure_parent_dir_exists(task->destPath);
-        fpDest = fopen_rwb(task->destPath);
+        fpDest = FileUtils_OpenFileUTF8(task->destPath, "r+b");
         if (!fpDest)
         {
-            fpDest = fopen_wb(task->destPath);
+            fpDest = FileUtils_OpenFileUTF8(task->destPath, "wb");
             if (!fpDest)
             {
                 fclose(fpSrc);
@@ -187,6 +141,13 @@ int RunTask(TransferTask* task)
 
     CryptoContext ctx;
     InitSecurity(&ctx, "SecretKey123");
+
+    // 【新增】关键修复：根据当前文件偏移量，调整密钥流的索引
+    // 否则断点续传时，密钥会从头开始算，导致解密失败
+    if (task->currentOffset > 0 && ctx.keyLen > 0)
+    {
+        ctx.keyIndex = (int)(task->currentOffset % ctx.keyLen);
+    }
 
     uint8_t buffer[CHUNK_SIZE];
     size_t bytesRead;

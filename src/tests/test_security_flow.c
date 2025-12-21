@@ -10,6 +10,7 @@
 #include "common/AppTypes.h"
 #include "core/TaskManager.h"
 #include "core/TransferEngine.h"
+#include "utils/FileUtils.h"
 
 // TransferEngine.c 实现了 RunTask，但没有在头文件暴露（项目中直接调用）。
 // 在测试中我们声明一下以便链接。
@@ -29,7 +30,7 @@ void test_on_error(int taskId, int errorCode, const char* msg)
 // 生成一个大小为 sizeMB 的测试文件（覆盖）
 static int create_dummy_file(const char* path, size_t sizeMB)
 {
-    FILE* f = fopen(path, "wb");
+    FILE* f = FileUtils_OpenFileUTF8(path, "wb");
     if (!f) return -1;
     const size_t block = 1024;
     char buf[1024];
@@ -126,6 +127,90 @@ int main(void)
         printf("  ID=%d 状态=%d 进度=%llu/%llu 源=%s 目标=%s\n",
                list[i].id, (int)list[i].status, list[i].currentOffset, list[i].totalSize,
                list[i].srcPath, list[i].destPath);
+    }
+
+    // 5) 解密（直接对密文做一次传输，使用相同的密钥 -> 应还原原始内容）
+    const char* recovered = "test_recovered.dat";
+    printf("\n5) 解密文件: %s -> %s\n", dest, recovered);
+    int id2 = AddTask(dest, recovered, 1);
+    if (id2 <= 0)
+    {
+        printf("无法添加解密任务，错误: %d\n", id2);
+    }
+    else
+    {
+        SetTaskCallbacks(id2, test_on_progress, test_on_error);
+        TransferTask* task2 = GetTaskById(id2);
+        if (!task2)
+        {
+            printf("未找到解密任务 %d\n", id2);
+        }
+        else
+        {
+            InitTransferEngine();
+            int r2 = RunTask(task2);
+            if (r2 != 0)
+            {
+                printf("解密任务返回错误: %d\n", r2);
+            }
+            else
+            {
+                printf("解密完成，开始校验输出是否与原文件一致...\n");
+
+                // 比较文件内容
+                FILE* f1 = FileUtils_OpenFileUTF8(src, "rb");
+                FILE* f2 = FileUtils_OpenFileUTF8(recovered, "rb");
+                if (!f1 || !f2)
+                {
+                    printf("无法打开文件进行比较。\n");
+                }
+                else
+                {
+                    // 获取大小
+                    fseek(f1, 0, SEEK_END);
+                    long s1 = ftell(f1);
+                    fseek(f1, 0, SEEK_SET);
+                    fseek(f2, 0, SEEK_END);
+                    long s2 = ftell(f2);
+                    fseek(f2, 0, SEEK_SET);
+                    if (s1 != s2)
+                    {
+                        printf("校验失败：大小不匹配，src=%ld, recovered=%ld\n", s1, s2);
+                    }
+                    else
+                    {
+                        int same = 1;
+                        const size_t bufSz = 4096;
+                        unsigned char* b1 = (unsigned char*)malloc(bufSz);
+                        unsigned char* b2 = (unsigned char*)malloc(bufSz);
+                        if (!b1 || !b2)
+                        {
+                            printf("内存分配失败，无法完成比较。\n");
+                            same = 0;
+                        }
+                        else
+                        {
+                            size_t rcount;
+                            while ((rcount = fread(b1, 1, bufSz, f1)) > 0)
+                            {
+                                size_t r2c = fread(b2, 1, bufSz, f2);
+                                if (r2c != rcount || memcmp(b1, b2, rcount) != 0)
+                                {
+                                    same = 0;
+                                    break;
+                                }
+                            }
+                        }
+                        if (b1) free(b1);
+                        if (b2) free(b2);
+                        if (same) printf("校验通过：解密后文件与原始文件一致。\n");
+                        else printf("校验失败：文件内容不同。\n");
+                    }
+                    fclose(f1);
+                    fclose(f2);
+                }
+            }
+        }
     }
 
     printf("测试结束。\n");

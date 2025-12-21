@@ -1,5 +1,6 @@
 ﻿#include "data/Persistence.h"
 #include "data/Logger.h"
+#include "utils/FileUtils.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -14,7 +15,7 @@ int Persistence_SaveTasks(const char* dbPath, TransferTask* tasks, int count)
         return -1;
     }
 
-    FILE* fp = fopen(dbPath, "wb");
+    FILE* fp = FileUtils_OpenFileUTF8(dbPath, "wb");
     if (!fp)
     {
         Logger_Log(LOG_ERROR, "无法打开任务数据库: %s", dbPath);
@@ -45,7 +46,7 @@ int Persistence_LoadTasks(const char* dbPath, TransferTask* outTasks, int maxCou
         return -1;
     }
 
-    FILE* fp = fopen(dbPath, "rb");
+    FILE* fp = FileUtils_OpenFileUTF8(dbPath, "rb");
     if (!fp) return 0; // 文件不存在视为无任务
 
     // 1. 校验魔数

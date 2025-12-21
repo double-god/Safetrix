@@ -3,6 +3,7 @@
 #include "common/ErrorCode.h"
 #include "data/Logger.h"
 #include "data/Persistence.h"
+#include "utils/FileUtils.h"
 
 #include <string.h>
 #include <stdio.h>
@@ -86,20 +87,10 @@ int AddTask(const char* src, const char* dest, int priority)
     task->currentOffset = 0;
 
     // 尝试获取源文件大小以便显示进度（失败时保留为 0）
-    FILE* fp = fopen(src, "rb");
-    if (fp)
-    {
-        fseek(fp, 0, SEEK_END);
-        long sz = ftell(fp);
-        if (sz > 0)
-        {
-            task->totalSize = (unsigned long long)sz;
-        }
-        fclose(fp);
-    }
+    task->totalSize = FileUtils_GetFileSize(src);
 
     g_task_count++;
-    TaskManager_Sync(); // 任务变更立即持久化
+    Persistence_SaveTasks(DB_PATH, g_tasks, g_task_count); // 任务变更立即持久化
     return task->id;
 }
 

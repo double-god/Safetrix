@@ -10,8 +10,8 @@ int main(int argc, char* argv[])
 {
 #ifdef _WIN32
     // 恢复使用系统默认控制台编码（注释掉强制 UTF-8），避免与文件系统 API 的编码不匹配
-    // SetConsoleCP(65001);
-    // SetConsoleOutputCP(65001);
+    SetConsoleCP(65001);
+    SetConsoleOutputCP(65001);
 #endif
 
     // 1. 初始化基础服务
