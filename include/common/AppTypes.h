@@ -1,4 +1,4 @@
-#ifndef COMMON_APP_TYPES_H
+﻿#ifndef COMMON_APP_TYPES_H
 #define COMMON_APP_TYPES_H
 
 #include <stdint.h>

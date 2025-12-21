@@ -1,10 +1,19 @@
-#include <stdio.h>
+﻿#include <stdio.h>
+#ifdef _WIN32
+#include <windows.h>
+#endif
 #include "ui/MainWindow.h"
 #include "data/Logger.h"      // 新增
 #include "utils/Algorithm.h"  // 新增
 
 int main(int argc, char* argv[])
 {
+#ifdef _WIN32
+    // 恢复使用系统默认控制台编码（注释掉强制 UTF-8），避免与文件系统 API 的编码不匹配
+    SetConsoleCP(65001);
+    SetConsoleOutputCP(65001);
+#endif
+
     // 1. 初始化基础服务
     Logger_Init("data/app.log");
     Algorithm_InitCRC32();

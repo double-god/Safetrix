@@ -1,4 +1,4 @@
-#ifndef PROGRESS_BAR_H
+﻿#ifndef PROGRESS_BAR_H
 #define PROGRESS_BAR_H
 
 #include <stdint.h>
@@ -17,7 +17,7 @@ void ProgressBar_Init(ProgressBar* bar, int id, int width);
 // 更新进度
 void ProgressBar_Update(ProgressBar* bar, float percent);
 
-// 渲染进度条 (模拟显示)
+// 渲染进度条
 void ProgressBar_Render(const ProgressBar* bar);
 
 #endif // PROGRESS_BAR_H

@@ -1,4 +1,4 @@
-#ifndef DATA_LOGGER_H
+﻿#ifndef DATA_LOGGER_H
 #define DATA_LOGGER_H
 
 #include <stdarg.h>
@@ -21,4 +21,3 @@ void Logger_Log(LogLevel level, const char* format, ...);
 void Logger_Close(void);
 
 #endif // DATA_LOGGER_H
-

@@ -1,4 +1,4 @@
-#ifndef CORE_SECURITY_H
+﻿#ifndef CORE_SECURITY_H
 #define CORE_SECURITY_H
 
 #include <stdint.h>

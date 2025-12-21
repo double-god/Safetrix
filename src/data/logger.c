@@ -1,4 +1,5 @@
-#include "data/Logger.h"
+﻿#include "data/Logger.h"
+#include "utils/FileUtils.h"
 #include <stdio.h>
 #include <stdarg.h>
 #include <time.h>
@@ -9,7 +10,7 @@ static FILE* g_logFile = NULL;
 void Logger_Init(const char* logFilePath)
 {
     if (g_logFile) fclose(g_logFile);
-    g_logFile = fopen(logFilePath, "a"); // 追加模式
+    g_logFile = FileUtils_OpenFileUTF8(logFilePath, "a"); // 追加模式
 }
 
 void Logger_Log(LogLevel level, const char* format, ...)
