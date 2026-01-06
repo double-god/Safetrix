@@ -20,7 +20,8 @@ list(LENGTH ALL_SOURCES ALL_SOURCES_COUNT)
 message(STATUS "Discovered ${ALL_SOURCES_COUNT} C source files in src/")
 
 # MAIN_SOURCES: exclude test sources
-set(MAIN_SOURCES ${ALL_SOURCES})
+set(MAIN_SOURCES ${ALL_SOURCES}
+        src/ui/startup.c)
 list(FILTER MAIN_SOURCES EXCLUDE REGEX ".*/src/tests/.*\\.c$")
 
 # TEST_SOURCES: include everything except main.c (so tests can link core implementation)
