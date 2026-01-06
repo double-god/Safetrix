@@ -162,7 +162,7 @@ void MainWindow_RunLoop(MainWindow* win)
         UI_Print(" 1. 创建测试文件 (10MB)                 \n");
         UI_Print(" 2. 添加传输任务 (加密/解密)            \n");
         UI_Print(" 3. 查看任务列表                        \n");
-        UI_Print(" 4. 运行任务 (阻塞执行)                 \n");
+        UI_Print(" 4. 运行任务                           \n");
         UI_Print(" 0. 退出                                \n");
         UI_Print("========================================\n");
         UI_Print(" [提示] 本工具采用对称加密。\n");
@@ -348,10 +348,19 @@ void MainWindow_RunLoop(MainWindow* win)
                 TransferTask* task = GetTaskById(runId);
                 if (task)
                 {
-                    UI_Print("[系统] 正在启动任务 %d ... (该操作为阻塞式执行，按 Ctrl+C 可中断)\n", runId);
-                    // 如果需要非阻塞执行，应将 RunTask 放到线程中或改为状态机
+                    UI_Print("[系统] 正在启动任务 %d ... \n", runId);
+                    UI_Print("      >>> 按 'P' 键可暂停任务，按 Ctrl+C 强行终止 <<<\n");
+
                     RunTask(task);
-                    UI_Print("\n[系统] 任务 %d 已结束。\n", runId);
+
+                    if (task->status == TASK_PAUSED)
+                    {
+                        UI_Print("\n[系统] 任务已暂停，返回主菜单。\n");
+                    }
+                    else
+                    {
+                        UI_Print("\n[系统] 任务已结束。\n");
+                    }
                 }
                 else
                 {

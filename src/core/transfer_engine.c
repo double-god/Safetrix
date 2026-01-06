@@ -12,6 +12,7 @@
 #include <direct.h>
 #include <windows.h>
 #include <wchar.h>
+#include <conio.h>
 #else
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -158,6 +159,34 @@ int RunTask(TransferTask* task)
 
     while ((bytesRead = fread(buffer, 1, CHUNK_SIZE, fpSrc)) > 0)
     {
+#ifdef _WIN32
+        // 非阻塞交互检测
+        if (_kbhit()) // 检查是否有键盘敲击（不阻塞）
+        {
+            int ch = _getch(); // 获取字符
+            if (ch == 'p' || ch == 'P') // 设定 'p' 为暂停 (Pause)
+            {
+                // A. 修改状态
+                task->status = TASK_PAUSED;
+
+                // B. 立即保存进度 (可以演示断点续传)
+                TaskManager_UpdateTask(task);
+                TaskManager_Sync();
+
+                // C. 给出提示
+                printf("\n\n[交互] 检测到暂停指令！\n");
+                printf("[系统] 进度已保存 (Offset: %llu)。\n", task->currentOffset);
+                printf("[系统] 文件句柄已释放，您现在可以检查文件内容。\n");
+
+                // D. 必须关闭文件！否则文件被锁死，无法用编辑器查看
+                fclose(fpSrc);
+                fclose(fpDest);
+
+                return 0; // 优雅退出 RunTask，回到主菜单
+            }
+        }
+#endif
+
         EncryptBuffer(buffer, (size_t)bytesRead, &ctx);
 
         size_t bytesWritten = fwrite(buffer, 1, bytesRead, fpDest);

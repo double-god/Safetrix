@@ -4,7 +4,7 @@
 #include "common/AppTypes.h"
 
 void InitTransferEngine(void);
-void StartTransfer(TransferTask* task);
+int RunTask(TransferTask* task);
 void StopTransfer(int taskId);
 
 #endif // CORE_TRANSFER_ENGINE_H
