@@ -162,7 +162,7 @@ void MainWindow_RunLoop(MainWindow* win)
         UI_Print(" 1. 创建测试文件 (10MB)                 \n");
         UI_Print(" 2. 添加传输任务 (加密/解密)            \n");
         UI_Print(" 3. 查看任务列表                        \n");
-        UI_Print(" 4. 运行任务 (阻塞执行)                 \n");
+        UI_Print(" 4. 运行任务                           \n");
         UI_Print(" 0. 退出                                \n");
         UI_Print("========================================\n");
         UI_Print(" [提示] 本工具采用对称加密。\n");
