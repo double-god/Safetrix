@@ -19,7 +19,7 @@ typedef void (*OnProgressCallback)(int taskId, double percentage, double speedMb
 typedef void (*OnErrorCallback)(int taskId, int errorCode, const char* errorMsg);
 
 // 核心任务结构体
-typedef struct
+typedef struct TransferTask
 {
     int id;
     char srcPath[256];

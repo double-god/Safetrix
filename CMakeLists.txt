@@ -29,7 +29,7 @@ set(TEST_SOURCES ${ALL_SOURCES})
 list(FILTER TEST_SOURCES EXCLUDE REGEX ".*/src/main\\.c$")
 
 # Create executable for main application using MAIN_SOURCES
-add_executable(SafeTrix ${MAIN_SOURCES} ${HEADERS} src/data/persistence.h)
+add_executable(SafeTrix ${MAIN_SOURCES} ${HEADERS})
 
 # Create tests executable linking core implementation (no main.c)
 add_executable(SafeTrixTests ${TEST_SOURCES} src/tests/test_security_flow.c)
