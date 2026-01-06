@@ -5,6 +5,7 @@
 #include "ui/MainWindow.h"
 #include "data/Logger.h"      // 新增
 #include "utils/Algorithm.h"  // 新增
+#include "../include/ui/startup.h"
 
 int main(int argc, char* argv[])
 {
@@ -13,6 +14,9 @@ int main(int argc, char* argv[])
     SetConsoleCP(65001);
     SetConsoleOutputCP(65001);
 #endif
+
+    /* 显示启动版权信息（控制台 + Windows 弹窗） */
+    Startup_ShowCopyright();
 
     // 1. 初始化基础服务
     Logger_Init("data/app.log");
