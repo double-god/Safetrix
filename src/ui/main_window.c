@@ -348,10 +348,19 @@ void MainWindow_RunLoop(MainWindow* win)
                 TransferTask* task = GetTaskById(runId);
                 if (task)
                 {
-                    UI_Print("[系统] 正在启动任务 %d ... (该操作为阻塞式执行，按 Ctrl+C 可中断)\n", runId);
-                    // 如果需要非阻塞执行，应将 RunTask 放到线程中或改为状态机
+                    UI_Print("[系统] 正在启动任务 %d ... \n", runId);
+                    UI_Print("      >>> 按 'P' 键可暂停任务，按 Ctrl+C 强行终止 <<<\n");
+
                     RunTask(task);
-                    UI_Print("\n[系统] 任务 %d 已结束。\n", runId);
+
+                    if (task->status == TASK_PAUSED)
+                    {
+                        UI_Print("\n[系统] 任务已暂停，返回主菜单。\n");
+                    }
+                    else
+                    {
+                        UI_Print("\n[系统] 任务已结束。\n");
+                    }
                 }
                 else
                 {
