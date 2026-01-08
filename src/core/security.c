@@ -19,7 +19,7 @@ void InitSecurity(CryptoContext* ctx, const char* password)
 
     memset(ctx, 0, sizeof(CryptoContext));
 
-    // 【架构亮点】挂载具体的加密策略
+    // 挂载具体的加密策略
     // 此处体现了多态性：ctx 并不关心使用的是什么算法，只管调用 interface
     ctx->algorithm = XOR_Algorithm;
 

@@ -6,7 +6,7 @@
 static uint32_t crc_table[256];
 static int crc_table_computed = 0;
 
-
+//预先计算了 0 到 255（即一个字节所有可能的值）对应的 CRC32 中间结果，并存入 crc_table 数组。
 static void make_crc_table(void)
 {
     uint32_t c;
@@ -28,6 +28,7 @@ static void make_crc_table(void)
 }
 
 void Algorithm_InitCRC32(void)
+//处理每个字节只需要 1 次 数组访问（内存读取）和简单的位运算。
 {
     if (!crc_table_computed)
     {
