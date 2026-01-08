@@ -77,7 +77,7 @@ int AddTask(const char* src, const char* dest, int priority)
     TransferTask* task = &g_tasks[g_task_count];
     memset(task, 0, sizeof(TransferTask));
 
-    task->id = g_next_task_id++;
+    task->id = g_next_task_id++; //分配新ID
     // 复制路径到任务结构体中（安全复制）
     strncpy(task->srcPath, src, sizeof(task->srcPath) - 1);
     strncpy(task->destPath, dest, sizeof(task->destPath) - 1);

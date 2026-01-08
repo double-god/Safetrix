@@ -143,7 +143,7 @@ int RunTask(TransferTask* task)
     CryptoContext ctx;
     InitSecurity(&ctx, "SecretKey123");
 
-    // 【新增】关键修复：根据当前文件偏移量，调整密钥流的索引
+    // 修复：根据当前文件偏移量，调整密钥流的索引
     // 否则断点续传时，密钥会从头开始算，导致解密失败
     if (task->currentOffset > 0 && ctx.keyLen > 0)
     {
@@ -182,7 +182,7 @@ int RunTask(TransferTask* task)
                 fclose(fpSrc);
                 fclose(fpDest);
 
-                return 0; // 优雅退出 RunTask，回到主菜单
+                return 0; // 退出 RunTask，回到主菜单
             }
         }
 #endif
@@ -217,6 +217,7 @@ int RunTask(TransferTask* task)
         }
 
         // 更频繁地更新 UI 回调（每块都回调），便于实时显示
+        //计算current-percent
         if (task->onProgress)
         {
             double percent = 0.0;

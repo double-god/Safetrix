@@ -14,7 +14,7 @@ int Persistence_SaveTasks(const char* dbPath, TransferTask* tasks, int count)
         Logger_Log(LOG_ERROR, "Persistence_SaveTasks: dbPath 为空");
         return -1;
     }
-
+    //覆盖写入
     FILE* fp = FileUtils_OpenFileUTF8(dbPath, "wb");
     if (!fp)
     {
@@ -71,6 +71,7 @@ int Persistence_LoadTasks(const char* dbPath, TransferTask* outTasks, int maxCou
     }
 
     // 4. 清理回调指针
+    // 结构体中的函数指针 (onProgress, onError) 保存的是上次运行时的内存地址。
     for (int i = 0; i < loaded; ++i)
     {
         outTasks[i].onProgress = NULL;
